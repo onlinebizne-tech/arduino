@@ -371,9 +371,51 @@ function initPromo() {
 
 /* ---------- Decorative art ---------- */
 function initArt() {
-  $("#heroArt").innerHTML = foodArt("signature");
+  $("#heroArt").innerHTML =
+    `<div class="hero-burger">${foodArt("signature")}<span class="hero-burger__shine" aria-hidden="true"></span></div>`;
   $("#promoArt").innerHTML = foodArt("combo");
   $("#aboutArt").innerHTML = foodArt("bbq");
+}
+
+/* ---------- Hero burger tilt (wow factor) ---------- */
+function initHeroTilt() {
+  const art = $("#heroArt");
+  const burger = art?.querySelector(".hero-burger");
+  if (!burger || !window.matchMedia("(pointer: fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  art.addEventListener("mousemove", (e) => {
+    const r = burger.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    burger.style.transform =
+      `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-6px)`;
+  });
+  art.addEventListener("mouseleave", () => {
+    burger.style.transform = "";
+  });
+}
+
+/* ---------- Scroll reveal ---------- */
+function initScrollReveal() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const targets = $$(
+    ".section__head, .product-card, .feature-card, .testimonial, .contact-card, .promo, .about"
+  );
+  targets.forEach(el => el.classList.add("reveal"));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.add("is-visible");
+        const cleanup = () => el.classList.remove("reveal", "is-visible");
+        el.addEventListener("transitionend", cleanup, { once: true });
+        setTimeout(cleanup, 1000); // fallback if transitionend never fires
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+  targets.forEach(el => io.observe(el));
 }
 
 /* ---------- Init ---------- */
@@ -389,4 +431,6 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#bestSellerGrid").innerHTML =
     PRODUCTS.filter(p => p.bestseller).map(productCard).join("");
   Cart.render();
+  initHeroTilt();
+  initScrollReveal();
 });

@@ -164,111 +164,27 @@ const ADDONS = [
 ];
 
 /* ------------------------------------------------------------
-   foodArt(key) — returns inline SVG illustration markup for a
-   product. Drawn with the site palette so images are always
-   crisp, lightweight and never 404.
+   foodArt(key) — returns a real food photo for a product.
+   Images live in assets/images/products/ (Unsplash, free license).
    ------------------------------------------------------------ */
+const ART_IMAGES = {
+  beef: "assets/images/products/classic-beef.jpg",
+  cheese: "assets/images/products/double-cheese.jpg",
+  chicken: "assets/images/products/chickenburger.jpg",
+  spicy: "assets/images/products/spicy-beef.jpg",
+  bbq: "assets/images/products/bbq-burger.jpg",
+  signature: "assets/images/products/signature-burger.jpg",
+  cheesechicken: "assets/images/products/chickensandwich.jpg",
+  combo: "assets/images/products/combo-meal.jpg",
+  feast: "assets/images/products/feast-burger.jpg",
+  drink: "assets/images/products/lemonade.jpg",
+  shake: "assets/images/products/milkshake.jpg",
+  fries: "assets/images/products/fries.jpg",
+  rings: "assets/images/products/onionrings.jpg",
+  cheesefries: "assets/images/products/cheesefries.jpg"
+};
+
 function foodArt(key) {
-  const svg = (inner) =>
-    `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">${inner}</svg>`;
-
-  const bun = `
-    <ellipse cx="100" cy="36" rx="86" ry="26" fill="#FAAA77"/>
-    <ellipse cx="100" cy="40" rx="72" ry="18" fill="#FEE6D8"/>`;
-  const patty = `
-    <rect x="26" y="62" width="148" height="20" rx="10" fill="#361602"/>
-    <rect x="26" y="66" width="148" height="6" rx="3" fill="#5a3312"/>`;
-  const cheese = `
-    <path d="M30 60 L50 70 L75 62 L100 72 L125 62 L150 70 L170 60 L170 56 L30 56 Z" fill="#F5C542"/>`;
-  const cheese2 = `<g transform="translate(0,-7)">${cheese}</g>`;
-  const lettuce = `
-    <path d="M28 78 q10 -10 20 0 q10 10 20 0 q10 -10 20 0 q10 10 20 0 q10 -10 20 0 q10 10 20 0 q10 -10 20 0 q10 10 20 0 L170 88 L30 88 Z" fill="#45BA36"/>`;
-  const tomato = `
-    <rect x="40" y="88" width="120" height="8" rx="4" fill="#FAAA77"/>`;
-  const bottom = `
-    <path d="M40 116 h120 a14 14 0 0 1 -14 14 h-92 a14 14 0 0 1 -14 -14 Z" fill="#FAAA77"/>
-    <ellipse cx="100" cy="146" rx="90" ry="8" fill="#3F789D" opacity="0.25"/>`;
-
-  const burger = (extras = "") =>
-    svg(`${bun}${extras}${patty}${lettuce}${tomato}${bottom}`);
-
-  switch (key) {
-    case "beef":
-      return burger(`<path d="M40 58 q20 -6 40 0 q20 6 40 0 q20 -6 40 0" stroke="#FEE6D8" stroke-width="5" fill="none" stroke-linecap="round"/>`);
-    case "cheese":
-      return burger(cheese2 + cheese);
-    case "chicken":
-      return svg(`${bun}
-        <rect x="30" y="60" width="140" height="24" rx="10" fill="#FAAA77"/>
-        <rect x="30" y="60" width="140" height="10" rx="5" fill="#FEE6D8"/>
-        ${lettuce}${tomato}${bottom}`);
-    case "spicy":
-      return burger(`<path d="M60 58 l6 -6 M100 56 l6 -6 M140 58 l6 -6" stroke="#FA0F00" stroke-width="4" stroke-linecap="round"/>` + cheese);
-    case "bbq":
-      return burger(`<rect x="40" y="58" width="120" height="8" rx="4" fill="#361602" opacity="0.55"/>` + cheese);
-    case "signature":
-      return burger(cheese2 + cheese +
-        `<circle cx="70" cy="62" r="4" fill="#FEE6D8"/><circle cx="130" cy="60" r="4" fill="#FEE6D8"/>`);
-    case "cheesechicken":
-      return svg(`${bun}
-        <rect x="30" y="58" width="140" height="24" rx="10" fill="#FAAA77"/>
-        ${cheese}${lettuce}${tomato}${bottom}`);
-    case "combo":
-      return svg(`
-        <rect x="52" y="96" width="96" height="52" rx="10" fill="#FEE6D8"/>
-        <rect x="52" y="96" width="96" height="10" rx="5" fill="#FAAA77"/>
-        ${bun.replace("cy=\"36\"", "cy=\"66\"").replace("cy=\"40\"", "cy=\"70\"")}
-        ${patty.replace("y=\"62\"", "y=\"84\"").replace("y=\"66\"", "y=\"88\"")}
-        <rect x="60" y="116" width="80" height="6" rx="3" fill="#45BA36"/>
-        <ellipse cx="100" cy="150" rx="70" ry="7" fill="#3F789D" opacity="0.25"/>`);
-    case "feast":
-      return svg(`
-        <rect x="46" y="100" width="108" height="50" rx="10" fill="#FEE6D8"/>
-        <rect x="46" y="100" width="108" height="10" rx="5" fill="#FAAA77"/>
-        ${bun.replace("cy=\"36\"", "cy=\"70\"").replace("cy=\"40\"", "cy=\"74\"").replace("rx=\"86\"", "rx=\"60\"").replace("rx=\"72\"", "rx=\"50\"")}
-        ${patty.replace("y=\"62\"", "y=\"92\"").replace("y=\"66\"", "y=\"96\"").replace("width=\"148\"", "width=\"104\"").replace("x=\"26\"", "x=\"48\"")}
-        <rect x="56" y="120" width="88" height="6" rx="3" fill="#45BA36"/>
-        <circle cx="80" cy="134" r="7" fill="#FAAA77"/><circle cx="120" cy="134" r="7" fill="#45BA36"/>
-        <ellipse cx="100" cy="152" rx="76" ry="6" fill="#3F789D" opacity="0.25"/>`);
-    case "drink":
-      return svg(`
-        <path d="M70 60 h60 l-8 80 a8 8 0 0 1 -8 7 h-28 a8 8 0 0 1 -8 -7 Z" fill="#FEE6D8"/>
-        <path d="M74 72 h52 l-6 64 a6 6 0 0 1 -6 6 h-28 a6 6 0 0 1 -6 -6 Z" fill="#FAAA77"/>
-        <rect x="92" y="40" width="8" height="60" rx="4" fill="#361602" transform="rotate(12 96 70)"/>
-        <circle cx="120" cy="55" r="9" fill="#FEE6D8"/>
-        <ellipse cx="100" cy="148" rx="60" ry="7" fill="#3F789D" opacity="0.25"/>`);
-    case "shake":
-      return svg(`
-        <path d="M72 66 h56 l-7 78 a8 8 0 0 1 -8 7 h-26 a8 8 0 0 1 -8 -7 Z" fill="#FEE6D8"/>
-        <path d="M76 78 h48 l-5 62 a6 6 0 0 1 -6 6 h-26 a6 6 0 0 1 -6 -6 Z" fill="#3F789D"/>
-        <path d="M80 66 q10 -18 20 0 q10 18 20 0 q10 -18 20 0" fill="#FEE6D8"/>
-        <rect x="124" y="46" width="6" height="50" rx="3" fill="#361602" transform="rotate(18 127 70)"/>
-        <ellipse cx="100" cy="148" rx="60" ry="7" fill="#3F789D" opacity="0.25"/>`);
-    case "fries":
-      return svg(`
-        <path d="M60 90 h80 l-8 52 a8 8 0 0 1 -8 7 h-48 a8 8 0 0 1 -8 -7 Z" fill="#FAAA77"/>
-        <path d="M64 90 h72 l-4 26 h-64 Z" fill="#FEE6D8"/>
-        <rect x="70" y="46" width="12" height="48" rx="6" fill="#F5C542"/>
-        <rect x="90" y="40" width="12" height="54" rx="6" fill="#F5C542"/>
-        <rect x="110" y="46" width="12" height="48" rx="6" fill="#F5C542"/>
-        <ellipse cx="100" cy="148" rx="60" ry="7" fill="#3F789D" opacity="0.25"/>`);
-    case "rings":
-      return svg(`
-        <path d="M56 92 h88 l-8 50 a8 8 0 0 1 -8 7 h-56 a8 8 0 0 1 -8 -7 Z" fill="#3F789D"/>
-        <circle cx="80" cy="70" r="17" fill="#F5C542"/><circle cx="80" cy="70" r="8" fill="#FEE6D8"/>
-        <circle cx="120" cy="70" r="17" fill="#F5C542"/><circle cx="120" cy="70" r="8" fill="#FEE6D8"/>
-        <circle cx="100" cy="58" r="17" fill="#F5C542"/><circle cx="100" cy="58" r="8" fill="#FEE6D8"/>
-        <ellipse cx="100" cy="148" rx="62" ry="7" fill="#361602" opacity="0.2"/>`);
-    case "cheesefries":
-      return svg(`
-        <path d="M58 92 h84 l-7 48 a8 8 0 0 1 -8 7 h-54 a8 8 0 0 1 -8 -7 Z" fill="#FAAA77"/>
-        <path d="M62 92 h76 l-4 24 h-68 Z" fill="#FEE6D8"/>
-        <rect x="72" y="48" width="11" height="44" rx="5" fill="#F5C542"/>
-        <rect x="91" y="44" width="11" height="50" rx="5" fill="#F5C542"/>
-        <rect x="110" y="48" width="11" height="44" rx="5" fill="#F5C542"/>
-        <path d="M66 84 q34 -12 68 0 l-3 10 h-62 Z" fill="#FFE082"/>
-        <ellipse cx="100" cy="148" rx="60" ry="7" fill="#3F789D" opacity="0.25"/>`);
-    default:
-      return burger();
-  }
+  const src = ART_IMAGES[key] || ART_IMAGES.beef;
+  return `<img src="${src}" alt="" loading="lazy">`;
 }
