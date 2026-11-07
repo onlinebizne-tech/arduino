@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#361602"/>
+  <circle cx="1050" cy="80" r="220" fill="#3F789D" opacity="0.4"/>
+  <circle cx="140" cy="560" r="180" fill="#FAAA77" opacity="0.35"/>
+  <g transform="translate(430,140)">
+    <ellipse cx="170" cy="60" rx="160" ry="48" fill="#FAAA77"/>
+    <ellipse cx="170" cy="70" rx="135" ry="34" fill="#FEE6D8"/>
+    <path d="M60 150 L90 172 L140 152 L170 180 L200 152 L250 172 L280 150 L280 142 L60 142 Z" fill="#F5C542"/>
+    <rect x="60" y="185" width="220" height="38" rx="18" fill="#361602"/>
+    <path d="M55 232 q18 -16 36 0 q18 16 36 0 q18 -16 36 0 q18 16 36 0 q18 -16 36 0 q18 16 36 0 L315 252 L55 252 Z" fill="#45BA36"/>
+    <rect x="90" y="258" width="160" height="16" rx="8" fill="#FAAA77"/>
+    <path d="M90 292 h160 a28 28 0 0 1 -28 28 h-104 a28 28 0 0 1 -28 -28 Z" fill="#FAAA77"/>
+  </g>
+  <text x="600" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="88" font-weight="800" fill="#FEE6D8" letter-spacing="6">BURGERKU</text>
+  <text x="600" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="600" fill="#FAAA77">Fresh • Juicy • Made With Love</text>
+</svg>

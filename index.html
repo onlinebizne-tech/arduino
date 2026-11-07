@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BURGERKU — Fresh Juicy Burgers | Order Online</title>
+  <meta name="description" content="BURGERKU — fresh, juicy gourmet burgers made daily. Order classic beef, crispy chicken, combos and more for delivery. Fast service, made with love.">
+  <meta name="theme-color" content="#361602">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="BURGERKU — Fresh Juicy Burgers">
+  <meta property="og:description" content="Burger juicy, fresh dan penuh rasa. Order online for delivery.">
+  <meta property="og:image" content="assets/images/og-burger.svg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "BURGERKU",
+    "servesCuisine": "Burgers",
+    "priceRange": "RM8 - RM40",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jalan Kenanga 12, Taman Pelangi",
+      "addressLocality": "Johor Bahru",
+      "postalCode": "81700",
+      "addressCountry": "MY"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:00",
+      "closes": "23:00"
+    }],
+    "telephone": "+60-12-345-6789"
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <a href="#home" class="logo" aria-label="BURGERKU home">
+      <span class="logo__icon" aria-hidden="true">🍔</span>
+      <span>BURGER<em>KU</em></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#best-seller">Best Seller</a>
+      <a href="#promotions">Promotions</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="cartOpen" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-badge hidden" id="cartCount" aria-live="polite">0</span>
+      </button>
+      <button type="button" class="icon-btn nav-toggle" id="navOpen" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MOBILE NAV DRAWER ================= -->
+  <div class="overlay" id="navOverlay" aria-hidden="true"></div>
+  <nav class="drawer" id="navDrawer" aria-label="Mobile navigation">
+    <div class="drawer__head">
+      <span class="logo"><span class="logo__icon" aria-hidden="true">🍔</span><span>BURGER<em>KU</em></span></span>
+      <button type="button" class="drawer__close" id="navClose" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer__body">
+      <a class="nav-link" href="#home">Home</a>
+      <a class="nav-link" href="#menu">Menu</a>
+      <a class="nav-link" href="#best-seller">Best Seller</a>
+      <a class="nav-link" href="#promotions">Promotions</a>
+      <a class="nav-link" href="#about">About Us</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
+    <div class="drawer__cta">
+      <button type="button" class="btn btn--primary btn--lg btn--block js-open-cart">ORDER NOW</button>
+    </div>
+  </nav>
+
+  <main id="home">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
+      <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div>
+          <span class="hero__eyebrow">★ Fresh • Fast • Delicious</span>
+          <h1>BURGER YANG BUAT ANDA <span class="accent">NAK LAGI</span></h1>
+          <p class="hero__sub">Burger juicy, fresh dan penuh rasa. Dibuat khas untuk anda — setiap hari, setiap suapan.</p>
+          <div class="hero__ctas">
+            <button type="button" class="btn btn--primary btn--lg js-open-cart">🍔 ORDER SEKARANG</button>
+            <a class="btn btn--outline btn--lg" href="#menu" style="color:var(--cream);border-color:var(--cream);">LIHAT MENU</a>
+          </div>
+        </div>
+        <div class="hero__art" id="heroArt" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ================= BEST SELLER ================= -->
+    <section class="section section--white" id="best-seller" aria-labelledby="bestSellerTitle">
+      <div class="section__head">
+        <h2 class="section__title" id="bestSellerTitle">🔥 BEST SELLER</h2>
+        <p class="section__sub">Yang paling digemari pelanggan kami — mesti cuba!</p>
+      </div>
+      <div class="product-grid" id="bestSellerGrid"></div>
+    </section>
+
+    <!-- ================= MENU ================= -->
+    <section class="section section--blue" id="menu" aria-labelledby="menuTitle">
+      <div class="section__head">
+        <h2 class="section__title" id="menuTitle">OUR <span class="accent">MENU</span></h2>
+        <p class="section__sub">Pilih kegemaran anda — semua burger dibuat fresh to order.</p>
+      </div>
+      <div class="filter-bar" role="group" aria-label="Filter menu by category">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-chip" data-filter="beef" aria-pressed="false">Beef</button>
+        <button type="button" class="filter-chip" data-filter="chicken" aria-pressed="false">Chicken</button>
+        <button type="button" class="filter-chip" data-filter="cheese" aria-pressed="false">Cheese</button>
+        <button type="button" class="filter-chip" data-filter="combo" aria-pressed="false">Combo</button>
+        <button type="button" class="filter-chip" data-filter="drinks" aria-pressed="false">Drinks</button>
+        <button type="button" class="filter-chip" data-filter="sides" aria-pressed="false">Sides</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- ================= PROMOTIONS ================= -->
+    <section class="section" id="promotions" aria-labelledby="promoTitle">
+      <div class="promo">
+        <span class="promo__tag">LIMITED TIME</span>
+        <div class="promo__art" id="promoArt" aria-hidden="true"></div>
+        <div>
+          <h3 id="promoTitle">COMBO SPECIAL</h3>
+          <p class="promo__desc">Burger + Fries + Drink — jimat dan kenyang!</p>
+          <p class="promo__price">RM15.90 <small>/ set</small></p>
+        </div>
+        <button type="button" class="btn btn--primary btn--lg" id="claimPromoBtn">CLAIM PROMO</button>
+      </div>
+    </section>
+
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section class="section section--white" aria-labelledby="whyTitle">
+      <div class="section__head">
+        <h2 class="section__title" id="whyTitle">WHY CHOOSE <span class="accent">US?</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">🍔</div>
+          <h3>Fresh Every Day</h3>
+          <p>Ingredients delivered fresh every morning.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">🔥</div>
+          <h3>Cooked Fresh</h3>
+          <p>Every order grilled to order, never reheated.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">⚡</div>
+          <h3>Fast Service</h3>
+          <p>Ready in 15 minutes or less, every time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon" aria-hidden="true">❤️</div>
+          <h3>Made With Love</h3>
+          <p>Every burger crafted with genuine care.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about" aria-labelledby="aboutTitle">
+      <div class="about">
+        <div class="about__art" id="aboutArt" aria-hidden="true"></div>
+        <div class="about__text">
+          <h2 class="section__title" id="aboutTitle" style="text-align:left;">ABOUT <span class="accent">US</span></h2>
+          <p>Burger kami dibuat menggunakan bahan berkualiti dan disediakan segar untuk setiap pesanan. Dari daging premium hingga sos rahsia kami — setiap suapan direka untuk memuaskan.</p>
+          <p>Kami percaya burger yang hebat bukan sahaja tentang rasa, tetapi juga tentang pengalaman — dari bahan mentah sehingga hidangan di hadapan anda.</p>
+          <div class="about__stats">
+            <div><strong>5+</strong><span>Years</span></div>
+            <div><strong>50K+</strong><span>Burgers Sold</span></div>
+            <div><strong>4.9★</strong><span>Avg Rating</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="section section--white" aria-labelledby="testiTitle">
+      <div class="section__head">
+        <h2 class="section__title" id="testiTitle">WHAT OUR <span class="accent">CUSTOMERS SAY</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <figure class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote><p>"Burger memang sedap. Patty juicy dan portion puas hati!"</p></blockquote>
+          <figcaption><footer>Ahmad<span>Regular Customer</span></footer></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote><p>"Best burger in JB. Delivery cepat dan burger sampai masih panas!"</p></blockquote>
+          <figcaption><footer>Siti<span>Foodie</span></footer></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote><p>"Signature burger is unreal. Worth every ringgit. Ordered 3 times this week!"</p></blockquote>
+          <figcaption><footer>Daniel<span>Loyal Fan</span></footer></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <blockquote><p>"Crispy chicken burger my favourite. Extra cheese makes it perfect."</p></blockquote>
+          <figcaption><footer>Priya<span>Student</span></footer></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote><p>"Combo deal is super value. Family feast fed all 4 of us happily."</p></blockquote>
+          <figcaption><footer>Mei Ling<span>Mom of 3</span></footer></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote><p>"Staff friendly, food fresh, price fair. Will definitely order again."</p></blockquote>
+          <figcaption><footer>Hafiz<span>Office Worker</span></footer></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section" id="contact" aria-labelledby="contactTitle">
+      <div class="section__head">
+        <h2 class="section__title" id="contactTitle">FIND <span class="accent">US</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>📍 Location</h3>
+          <p id="restaurantAddress">Jalan Kenanga 12, Taman Pelangi, 81700 Johor Bahru</p>
+          <a class="btn btn--green" style="margin-top:14px;padding:11px 22px;font-size:.85rem;" href="https://maps.google.com/?q=Johor+Bahru" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="contact-card hours">
+          <h3>🕐 Opening Hours</h3>
+          <ul>
+            <li><strong>Monday – Sunday</strong></li>
+            <li>11:00 AM – 11:00 PM</li>
+          </ul>
+        </div>
+        <div class="contact-card">
+          <h3>📞 Contact</h3>
+          <ul>
+            <li>Phone: <a href="tel:+60123456789">+60 12-345 6789</a></li>
+            <li>WhatsApp: <a href="https://wa.me/60123456789" target="_blank" rel="noopener">Chat with us</a></li>
+          </ul>
+        </div>
+        <div class="contact-card">
+          <h3>🚚 Delivery</h3>
+          <ul>
+            <li>Within Johor Bahru area</li>
+            <li>Delivery fee: RM5.00</li>
+            <li><strong style="color:var(--green)">FREE delivery on orders RM30+</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <span class="logo"><span class="logo__icon" aria-hidden="true">🍔</span><span>BURGER<em>KU</em></span></span>
+    <p>© 2026 BURGERKU. All rights reserved. Made with ❤️ in Johor Bahru.</p>
+  </footer>
+
+  <!-- ================= FLOATING ORDER BUTTON ================= -->
+  <div class="floating-order">
+    <button type="button" class="btn btn--primary btn--lg" id="floatingOrderBtn">🍔 ORDER NOW</button>
+  </div>
+
+  <!-- ================= CART DRAWER ================= -->
+  <div class="overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer__head">
+      <h2 style="font-size:1.2rem;font-weight:800;">Your Cart</h2>
+      <button type="button" class="drawer__close" id="cartClose" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-empty hidden" id="cartEmpty">
+      <div class="emoji" aria-hidden="true">🛒</div>
+      <p>Your cart is empty.<br>Let's fix that!</p>
+    </div>
+    <ul id="cartItems"></ul>
+    <div class="cart-drawer__total" id="cartFooter">
+      <p class="cart-hint" id="freeDeliveryHint"></p>
+      <div class="cart-line"><span>Subtotal</span><strong id="cartSubtotal">RM0.00</strong></div>
+      <div class="cart-line"><span>Delivery</span><strong id="cartDelivery">RM0.00</strong></div>
+      <div class="cart-line cart-line--total"><span>Total</span><strong id="cartTotal">RM0.00</strong></div>
+      <button type="button" class="btn btn--green btn--block" id="checkoutBtn" style="margin-top:14px;">PROCEED TO ORDER</button>
+    </div>
+  </aside>
+
+  <!-- ================= PRODUCT MODAL ================= -->
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <button type="button" class="modal__close" id="modalClose" aria-label="Close product details">✕</button>
+      <div class="modal__art" id="modalArt"></div>
+      <h3 class="modal__name" id="modalName"></h3>
+      <div class="modal__meta">
+        <span class="modal__price" id="modalPrice"></span>
+        <span class="modal__rating" id="modalRating"></span>
+      </div>
+      <p class="modal__desc" id="modalDesc"></p>
+
+      <label class="modal__label" for="modalQtyDec">Quantity</label>
+      <div class="qty-control" role="group" aria-label="Quantity">
+        <button type="button" id="modalQtyDec" aria-label="Decrease quantity">−</button>
+        <span id="modalQty">1</span>
+        <button type="button" id="modalQtyInc" aria-label="Increase quantity">+</button>
+      </div>
+
+      <span class="modal__label">Add-ons</span>
+      <div class="addons" id="modalAddons"></div>
+
+      <label class="modal__label" for="modalInstructions">Special Instructions</label>
+      <textarea class="modal__notes" id="modalInstructions" placeholder="e.g. no onions, extra spicy…"></textarea>
+
+      <div class="modal__total-row">
+        <span>Total</span>
+        <span id="modalTotal">RM0.00</span>
+      </div>
+      <button type="button" class="btn btn--primary btn--block btn--lg" id="modalAddToCart">ADD TO CART</button>
+    </div>
+  </div>
+
+  <!-- ================= CHECKOUT MODAL ================= -->
+  <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <button type="button" class="modal__close" id="checkoutClose" aria-label="Close checkout">✕</button>
+      <h3 class="modal__name" id="checkoutTitle">Checkout</h3>
+
+      <div id="orderForm">
+        <div class="checkout-summary">
+          <h4>Order Summary</h4>
+          <ul id="checkoutItems"></ul>
+          <div class="cart-line"><span>Subtotal</span><strong id="checkoutSubtotal"></strong></div>
+          <div class="cart-line"><span>Delivery</span><strong id="checkoutDelivery"></strong></div>
+          <div class="cart-line cart-line--total"><span>Total</span><strong id="checkoutTotal"></strong></div>
+        </div>
+
+        <form class="checkout-form" id="orderFormEl" novalidate>
+          <div>
+            <label for="custName">Name</label>
+            <input type="text" id="custName" name="name" required placeholder="Your name" autocomplete="name">
+          </div>
+          <div>
+            <label for="custPhone">Phone Number</label>
+            <input type="tel" id="custPhone" name="phone" required placeholder="e.g. 012-345 6789" autocomplete="tel">
+          </div>
+          <div>
+            <label for="custAddress">Delivery Address</label>
+            <textarea id="custAddress" name="address" required placeholder="Full delivery address"></textarea>
+          </div>
+          <div>
+            <label>Payment Method</label>
+            <div class="pay-options" role="radiogroup" aria-label="Payment method">
+              <label class="pay-pill is-selected">
+                <input type="radio" name="payment" value="Cash" checked> Cash
+              </label>
+              <label class="pay-pill">
+                <input type="radio" name="payment" value="Online Banking"> Online Banking
+              </label>
+              <label class="pay-pill">
+                <input type="radio" name="payment" value="E-wallet"> E-wallet
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="custNotes">Order Notes (optional)</label>
+            <textarea id="custNotes" name="notes" placeholder="Any special requests…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--green btn--block btn--lg" id="placeOrderBtn">Place Order</button>
+        </form>
+      </div>
+
+      <div class="order-success hidden" id="orderSuccess">
+        <div class="big" aria-hidden="true">🎉</div>
+        <h3>Order Received!</h3>
+        <p>Terima kasih! We're opening WhatsApp with your order details…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST ================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
